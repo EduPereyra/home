@@ -26,6 +26,10 @@ alt + Tab
 Print
 	flameshot gui
 
+# Terminal scratchpad
+super + u
+	~/Scripts/scratchpad.sh dropdown					
+
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
@@ -184,4 +188,4 @@ super + ctrl {_,+ shift} + {equal,minus,0}
 
 # Move windows to next/prev  monitor
 super + shift + bracket{left,right}
-  	~/.config/bspwm/hidden-script.shbspc node -m {prev,next} --follow
+  	bspc node -m {prev,next} --follow
