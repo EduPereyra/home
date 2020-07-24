@@ -37,19 +37,20 @@ green = #b5c649
 brown = #7b8641
 
 [bar/bar1]
+enable-ipc = true
 monitor = ${env:MONITOR:HDMI-A-0}
 ;bottom = true
 width = 100%
-height = 15
+height = 13
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 1
+line-size = 0
 line-color = #f00
 
 border-size = 0
@@ -62,15 +63,17 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = Iosevka:style=Regular:pixelsize=8.5;0
-#font-1 = FontAwesome:style=Regular:size=7:antialias=false;0
+font-0 = Iosevka:style=Regular:pixelsize=8.5;1
 font-1 = FontAwesome:style=Regular:size=8:antialias=true;1
 font-2 = siji:pixelsize=10;1
 font-3 = Iosevka:style=Medium:size=9;3
+font-4 = FontAwesome:style=Regular:size=6:antialias=true;1
+font-5 = Iosevka:style=Italic:pixelsize=8;2
+font-6 = FontAwesome:style=Regular:size=8:antialias=true;2
 
-modules-left = bspwm xwindow
-;modules-center = xwindow
-modules-right = system-bluetooth-bluetoothctl change-pulseaudio-profile pulseaudio arrow5 hidden-nodes arrow2 xkeyboard arrow7 cpu arrow6 temperature arrow5 memory arrow2 filesystem arrow7 vpn-networkmanager-status arrow6 eth arrow5 popup-calendar arrow2 powermenu
+modules-left = arrow5 player-mpris-tail arrow2 pulseaudio arrow7 change-pulseaudio-profile arrow6
+modules-center = bspwm
+modules-right = arrow5 hidden-nodes arrow2 updates-pacman-aurhelper arrow7 vpn-networkmanager-status arrow6 eth arrow5 popup-calendar arrow2 powermenu
 
 tray-position = right
 tray-padding = 1
@@ -89,76 +92,50 @@ wm-restack = bspwm
 
 cursor-click = pointer
 cursor-scroll = ns-resize
-#separator = "/" 
-;separator-color = ${colors.blue}
 
 [bar/bar2]
-monitor = ${env:MONITOR:DVI-D-0}
+#monitor = ${env:MONITOR:DVI-D-0}
+monitor = ${env:MONITOR:HDMI-A-0}
+bottom = true
 width = 100%
-height = 15
+height = 13
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
-fixed-center = false
+fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
-line-size = 1
+line-size = 0
 line-color = #f00
 border-size = 0
 border-bottom-size = 0
 border-color = ${colors.background}
 padding-left = 1
-padding-right = 0
+padding-right = 2
 module-margin-left = 1
-module-margin-right = 2
-font-0 = iosevka:style=Regular:pixelsize=8.5;0
-font-1 = FontAwesome:style=Regular:size=8:antialias=false;0
+module-margin-right = 1
+font-0 = Iosevka:style=Regular:pixelsize=8.5;1
+font-1 = FontAwesome:style=Regular:size=8:antialias=true;1
 font-2 = siji:pixelsize=10;1
-modules-left = bspwm
-modules-right = date
+font-3 = Iosevka:style=Medium:size=9;3
+font-4 = Weather Icons:size=10;1
+font-5 = Iosevka:style=Italic:pixelsize=8.5;1
+
+modules-left = arrow7 weather-icon openweathermap-detailed arrow6 xkeyboard 
+modules-right = system-bluetooth-bluetoothctl arrow7 cpu arrow6 temperature arrow5 memory arrow2 filesystem
+modules-center = xwindow
 cursor-click = pointer
 cursor-scroll = ns-resize
-separator = "/"
+#separator = "/"
 wm-restack = bspwm
 
-[bar/bar3]
-monitor = ${env:MONITOR:DisplayPort-1}
-width = 100%
-height = 15
-;offset-x = 1%
-;offset-y = 1%
-radius = 0.0
-fixed-center = false
-background = ${colors.background}
-foreground = ${colors.foreground}
-line-size = 1
-line-color = #f00
-border-size = 0
-border-bottom-size = 0
-border-color = ${colors.background}
-padding-left = 1
-padding-right = 0
-module-margin-left = 1
-module-margin-right = 2
-font-0 = iosevka:style=Regular:pixelsize=8.5;0
-font-1 = FontAwesome:style=Regular:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
-modules-left = bspwm
-;modules-center = system-bluetooth-bluetoothctl
-modules-right = date
-;tray-background = #0063ff
-cursor-click = pointer
-cursor-scroll = ns-resize
-separator = "/"
-wm-restack = bspwm
- 
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:150:...%
 #label = %title%
 format-foreground = #b3cfe5
 label-padding = 1
-label-font = 2
+label-font = 1
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -195,97 +172,92 @@ format = <label-state> <label-mode>
 #ws-icon-1 = 2;
 ws-icon-0 = 1;
 ws-icon-1 = 2;
-ws-icon-2 = 3;3
-ws-icon-3 = 4;4
-ws-icon-4 = 5;5
-ws-icon-5 = 6;6
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
 ws-icon-6 = 7;
 ws-icon-7 = 8;
 ws-icon-8 = 9;
 ws-icon-9 = 10;
-ws-icon-10 = 11;11
-ws-icon-11 = 12;12
+ws-icon-10 = 11;
+ws-icon-11 = 12;
 ws-icon-default = 
 
 label-focused = %icon%
 label-focused-background = ${colors.background-alt}
 #label-focused-background = #0087af
-#label-focused-foreground = #9e3605
+label-focused-foreground = ${colors.orange}
 #label-focused-foreground = #9e3605
 label-focused-underline= #cd4301
-
-label-focused-padding = 2
-
+label-focused-padding = 1
 label-occupied = %icon%
-label-occupied-padding = 2
-;
+label-occupied-padding = 1
 label-urgent = %icon%!
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-;
+label-urgent-padding = 1
 label-empty = %icon%
 label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
-
+label-empty-padding = 1
 ; Separator in between workspaces
 ; label-separator = |
 pin-workspaces = false
 wrapping-scroll = false
 
-[module/i3]
-type = internal/i3
-format = <label-state> <label-mode>
-index-sort = true
-wrapping-scroll = false
-
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
-ws-icon-0 = 1;
-label-mode-padding = 2
-label-mode-foreground = ${colors.blue}
-label-mode-background = ${colors.background-alt}
-
-; focused = Active workspace on focused monitor
-label-focused = %index%
-label-focused-background = ${colors.foreground-alt}
-
-label-focused-underline = ${colors.primary}
-;label-focused-overline = ${colors.primary} 
-label-focused-padding = 2
-
-; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
-label-unfocused-padding = 2
-
-; visible = Active workspace on unfocused monitor
-label-visible = %index%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = ${self.label-focused-padding}
-
-; urgent = Workspace with urgency hint set
-label-urgent = %index%
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
+#[module/i3]
+#type = internal/i3
+#format = <label-state> <label-mode>
+#index-sort = true
+#wrapping-scroll = false
+#
+#; Only show workspaces on the same output as the bar
+#;pin-workspaces = true
+#ws-icon-0 = 1;
+#label-mode-padding = 2
+#label-mode-foreground = ${colors.blue}
+#label-mode-background = ${colors.background-alt}
+#
+#; focused = Active workspace on focused monitor
+#label-focused = %index%
+#label-focused-background = ${colors.foreground-alt}
+#
+#label-focused-underline = ${colors.primary}
+#;label-focused-overline = ${colors.primary} 
+#label-focused-padding = 2
+#
+#; unfocused = Inactive workspace on any monitor
+#label-unfocused = %index%
+#label-unfocused-padding = 2
+#
+#; visible = Active workspace on unfocused monitor
+#label-visible = %index%
+#label-visible-background = ${self.label-focused-background}
+#label-visible-underline = ${self.label-focused-underline}
+#label-visible-padding = ${self.label-focused-padding}
+#
+#; urgent = Workspace with urgency hint set
+#label-urgent = %index%
+#label-urgent-background = ${colors.alert}
+#label-urgent-padding = 2
+#
 ; Separator in between workspaces
 ;label-separator = | 
 ;label-separator-foreground = ${colors.blue}
 ;label-separator-padding = 0
 
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
-
+#[module/mpd]
+#type = internal/mpd
+#format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+#
+#icon-prev = 
+#icon-stop = 
+#icon-play = 
+#icon-pause = 
+#icon-next = 
+#
+#label-song-maxlen = 25
+#label-song-ellipsis = true
+#
 ;[module/xbacklight]
 ;type = internal/xbacklight
 
@@ -365,9 +337,11 @@ interval = 5.0
 unknown-as-up = true
 format-connected = <label-connected>
 #format-connected-underline = ${colors.foreground-alt}
-format-connected-prefix = "  "
+#format-connected-prefix = "  "
+#format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.brown}
-label-connected = "eth up"
+#label-connected = "eth up"
+label-connected = %{F#b5c649}%{F-}%{F#858585}%downspeed:9%%{F-}%{F#b5c649} %{F-}%{F#858585}%upspeed:9%%{F-}
 ;label-connected = %linkspeed%
 #format-connected-background = #085394 
 #format-connected-foreground = #b3c3eb
@@ -376,20 +350,20 @@ format-disconnected = <label-disconnected>
 #format-disconnected-underline = ${colors.alert}
 label-disconnected = "eth down"
 label-disconnected-foreground = ${colors.foreground-alt}
-format-connected-offset = -11
+format-connected-offset = -5
 
-[module/date]
-type = internal/date
-interval = 5
-date =
-date-alt = " %Y-%m-%d"
-time = %H:%M
-time-alt = %H:%M:%S
-format-prefix = 
-format-prefix-foreground = ${colors.blue}
-#format-underline = #0a6cf5
-label = %date% %time%
-#click-right = /usr/bin/gsimplecal
+#[module/date]
+#type = internal/date
+#interval = 5
+#date =
+#date-alt = " %Y-%m-%d"
+#time = %H:%M
+#time-alt = %H:%M:%S
+#format-prefix = 
+#format-prefix-foreground = ${colors.blue}
+##format-underline = #0a6cf5
+#label = %date% %time%
+##click-right = /usr/bin/gsimplecal
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -420,18 +394,14 @@ bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
-
 ;[module/alsa]
 ;type = internal/alsa
-
 ;format-volume = <label-volume> <bar-volume>
 ;label-volume = VOL
 ;label-volume-foreground = ${root.foreground}
-
 ;format-muted-prefix = " "
 ;format-muted-foreground = ${colors.foreground-alt}
 ;label-muted = sound muted
-
 ;bar-volume-width = 10
 ;bar-volume-foreground-0 = #55aa55
 ;bar-volume-foreground-1 = #55aa55
@@ -558,9 +528,12 @@ exec = ~/.config/polybar/change-pulseaudio-profile.sh
 #tail = true
 interval = 1
 click-left = ~/.config/polybar/change-pulseaudio-profile.sh --toggle &
-format-font = 2
-format-foreground = #f5a70a
-#format-underline= #cd4301
+format-font = 7
+#format-foreground = #f5a70a
+format-foreground = #000000
+format-background = ${colors.orange}
+format-offset = -12
+format-padding = 1
 
 [module/hidden-nodes]
 type = custom/script
@@ -676,6 +649,47 @@ format-prefix = "  "
 format-background = #6b748b 
 format-foreground = #000000
 format-offset = -12
+
+[module/updates-pacman-aurhelper]
+type = custom/script
+exec = ~/.config/polybar/updates-pacman-aurhelper.sh
+interval = 600
+format-prefix = " "
+format-prefix-foreground = ${colors.brown}
+format-offset = -5
+
+[module/openweathermap-detailed]
+type = custom/script
+exec = ~/.config/polybar/openweathermap-detailed.sh
+interval = 600
+#label-font = 5
+format-offset = -12
+#format-background = #6b748b
+format-background = ${colors.orange}
+format-foreground = #000000
+format-font = 6
+
+[module/player-mpris-tail]
+type = custom/script
+exec = ~/.config/polybar/player-mpris-tail.py -f '{icon} {:artist:t25:{artist}:}{:artist: - :}{:t25:{title}:}' --icon-playing  -b vlc -b chromium  
+tail = true
+click-middle = ~/.config/polybar/player-mpris-tail.py previous -b vlc -b chromium &
+click-right = ~/.config/polybar/player-mpris-tail.py next -b vlc -b chromium &
+click-left = ~/.config/polybar/player-mpris-tail.py play-pause -b vlc -b chromium &
+format-background = #6b748b
+format-foreground = #000000
+format-offset = -12
+format-padding = 1
+format-font = 6
+
+[module/weather-icon]
+type = custom/text
+content = 
+content-background = ${colors.orange}
+content-foreground = #000000
+content-font = 5
+content-offset = -12
+content-padding = 1
 
 [settings]
 screenchange-reload = false

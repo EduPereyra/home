@@ -10,17 +10,17 @@ profile_print() {
 	
 	case "$PROFILE" in
 		$MUSIC_PROFILE)
-			printf ''
+			printf '  '
 			;;
 		$CALL_PROFILE)
-			printf ''
+			printf '  '
 			;;
 		*)
-			printf ''
+			printf '  '
 			;;
 	esac
     else
-	printf '' 
+	printf '  ' 
     fi
 }
 

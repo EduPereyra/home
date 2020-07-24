@@ -40,7 +40,7 @@ brown = #7b8641
 monitor = ${env:MONITOR:HDMI-A-0}
 ;bottom = true
 width = 100%
-height = 15
+height = 13
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
@@ -49,7 +49,7 @@ fixed-center = false
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 1
+line-size = 0
 line-color = #f00
 
 border-size = 0
@@ -68,9 +68,9 @@ font-1 = FontAwesome:style=Regular:size=8:antialias=true;1
 font-2 = siji:pixelsize=10;1
 font-3 = Iosevka:style=Medium:size=9;3
 
-modules-left = bspwm xwindow
-;modules-center = xwindow
-modules-right = system-bluetooth-bluetoothctl change-pulseaudio-profile pulseaudio xkeyboard arrow7 cpu arrow6 temperature arrow5 memory arrow2 filesystem arrow7 vpn-networkmanager-status arrow6 eth arrow5 popup-calendar arrow2 powermenu
+modules-left = bspwm 
+modules-center = xwindow
+modules-right = system-bluetooth-bluetoothctl change-pulseaudio-profile pulseaudio arrow5 hidden-nodes arrow2 xkeyboard arrow7 cpu arrow6 temperature arrow5 memory arrow2 filesystem arrow7 vpn-networkmanager-status arrow6 eth arrow5 popup-calendar arrow2 powermenu
 
 tray-position = right
 tray-padding = 1
@@ -93,9 +93,11 @@ cursor-scroll = ns-resize
 ;separator-color = ${colors.blue}
 
 [bar/bar2]
-monitor = ${env:MONITOR:DVI-D-0}
+#monitor = ${env:MONITOR:DVI-D-0}
+monitor = ${env:MONITOR:HDMI-A-0}
+bottom = true
 width = 100%
-height = 15
+height = 12
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
@@ -194,14 +196,14 @@ format = <label-state> <label-mode>
 #ws-icon-0 = 1;
 #ws-icon-1 = 2;
 ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
+ws-icon-1 = 2;
+ws-icon-2 = 3;3
 ws-icon-3 = 4;4
 ws-icon-4 = 5;5
-ws-icon-5 = 6;6
-ws-icon-6 = 7;
-ws-icon-7 = 8;
-ws-icon-8 = 9;9
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
 ws-icon-9 = 10;
 ws-icon-10 = 11;11
 ws-icon-11 = 12;12
@@ -210,7 +212,7 @@ ws-icon-default = 
 label-focused = %icon%
 label-focused-background = ${colors.background-alt}
 #label-focused-background = #0087af
-#label-focused-foreground = #9e3605
+label-focused-foreground = #9e3605
 #label-focused-foreground = #9e3605
 label-focused-underline= #cd4301
 
@@ -315,7 +317,7 @@ format-prefix = " "
 format-prefix-foreground = #000000
 #format-underline = ${colors.foreground-alt}
 #label = %percentage:2%%
-label = %{A1:alacritty --config-file $HOME/.config/alacritty/htop.yml --class Htop,Htop -e htop -t htop &:}%percentage:2%%%{A}
+label = %{A1:alacritty --config-file $HOME/.config/alacritty/htop.yml --class Htop,Htop -t htop -e htop -s PERCENT_CPU &:}%percentage:2%%%{A}
 #format-background = #085394
 format-background = ${colors.orange}
 format-foreground = #000000
@@ -329,7 +331,7 @@ format-prefix = " "
 format-prefix-foreground = #000000
 #format-underline = ${colors.foreground-alt}
 #label = %percentage_used%%
-label = %{A1:alacritty --config-file $HOME/.config/alacritty/htop.yml --class Htop,Htop -e htop -t htop &:}%percentage_used%%%{A}
+label = %{A1:alacritty --config-file $HOME/.config/alacritty/htop.yml --class Htop,Htop -t htop -e htop -s PERCENT_MEM &:}%percentage_used%%%{A}
 ;label = RAM %gb_used%/%gb_free%
 format-background = #6b748b
 format-foreground = #000000
@@ -555,12 +557,28 @@ format-font = 2
 [module/change-pulseaudio-profile]
 type = custom/script
 exec = ~/.config/polybar/change-pulseaudio-profile.sh
-tail = true
+#tail = true
+interval = 1
 click-left = ~/.config/polybar/change-pulseaudio-profile.sh --toggle &
 format-font = 2
 format-foreground = #f5a70a
 #format-underline= #cd4301
 
+[module/hidden-nodes]
+type = custom/script
+exec = ~/.config/polybar/hidden-nodes.sh
+#tail = true
+interval = 1
+click-left = ~/.config/bspwm/hidden-script.sh
+#format-font = 4
+#format-foreground = #f5a70a
+format-prefix = " "
+#format-prefix-foreground = ${colors.brown}
+format-background = #6b748b
+format-foreground = #000000
+format-padding = 1
+format-offset = -12
+format-prefix-foreground = #000000
 
 [module/arrow1]
 type = custom/text
