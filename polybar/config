@@ -120,6 +120,7 @@ font-2 = siji:pixelsize=10;1
 font-3 = Iosevka:style=Medium:size=9;3
 font-4 = Weather Icons:size=10;1
 font-5 = Iosevka:style=Italic:pixelsize=8.5;1
+font-6 = Iosevka Nerd:style=Regular:pixelsize=8.5;1
 
 modules-left = arrow7 weather-icon openweathermap-detailed arrow6 xkeyboard 
 modules-right = system-bluetooth-bluetoothctl arrow7 cpu arrow6 temperature arrow5 memory arrow2 filesystem
@@ -157,13 +158,15 @@ type = internal/fs
 interval = 25
 mount-0 = /
 mount-1 = /DATA
-label-mounted = %{F#858585}%mountpoint%%{F-}: %{F#b5c649}%percentage_used%%%{F-}
+#label-mounted = %{F#858585}%mountpoint%%{F-}: %{F#b5c649}%percentage_used%%%{F-}
+label-mounted = %{A1:alacritty --class Htop,Htop --hold -e dust &:}%{A2:alacritty --class Htop,Htop --hold -e dust /DATA &:}%{F#858585}%mountpoint%%{F-}: %{F#b5c649}%percentage_used%%%{F-}%{A}%{A}
 #label-mounted = %{F#0087af}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = #447c54
 #label-mounted-background = #447c54
 #label-mounted-offset = 12
 #format-offset = 12
+label = %{A1:alacritty --config-file $HOME/.config/alacritty/htop.yml --class Htop,Htop -t htop -e htop -s PERCENT_CPU &:}%percentage:2%%%{A}
 
 [module/bspwm]
 type = internal/bspwm
@@ -179,8 +182,8 @@ ws-icon-5 = 6;
 ws-icon-6 = 7;
 ws-icon-7 = 8;
 ws-icon-8 = 9;
-ws-icon-9 = 10;
-ws-icon-10 = 11;
+ws-icon-9 = 10;
+ws-icon-10 = 11;
 ws-icon-11 = 12;
 ws-icon-default = 
 
@@ -456,6 +459,7 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
+#hwmon-path = /sys/devices/pci0000:00/0000:00:08.1/0000:29:00.0/hwmon/hwmon0/temp1_input
 hwmon-path = /sys/devices/pci0000:00/0000:00:08.1/0000:29:00.0/hwmon/hwmon1/temp1_input
 #hwmon-path = /sys/devices/pci0000:00/0000:00:08.1/0000:29:00.0/hwmon/hwmon2/temp1_input
 #hwmon-path = /sys/devices/pci0000:00/0000:00:08.1/0000:29:00.0/hwmon/hwmon3/temp1_input
@@ -657,6 +661,7 @@ interval = 600
 format-prefix = " "
 format-prefix-foreground = ${colors.brown}
 format-offset = -5
+click-left = alacritty --config-file $HOME/.config/alacritty/htop.yml --class Htop,Htop --hold -e checkupdates &
 
 [module/openweathermap-detailed]
 type = custom/script
@@ -668,10 +673,11 @@ format-offset = -12
 format-background = ${colors.orange}
 format-foreground = #000000
 format-font = 6
+click-left = chromium https://openweathermap.org/city/3834813 &
 
 [module/player-mpris-tail]
 type = custom/script
-exec = ~/.config/polybar/player-mpris-tail.py -f '{icon} {:artist:t25:{artist}:}{:artist: - :}{:t25:{title}:}' --icon-playing  -b vlc -b chromium  
+exec = ~/.config/polybar/player-mpris-tail.py -f '{icon} {:artist:t25:{artist}:}{:artist: - :}{:t25:{title}:}' --icon-playing   -b vlc -b chromium  
 tail = true
 click-middle = ~/.config/polybar/player-mpris-tail.py previous -b vlc -b chromium &
 click-right = ~/.config/polybar/player-mpris-tail.py next -b vlc -b chromium &
