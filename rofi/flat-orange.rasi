@@ -17,7 +17,7 @@
    blackselect:      #303030;
    darkgray:         #848484;
    scrollbarcolor:   #505050;
-   font: "Iosevka Regular 8.5";
+   font: "Iosevka Regular 11.5";
    background-color: @blackdarkest;
 }
 

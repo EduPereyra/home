@@ -176,7 +176,8 @@ super + alt + {h,j,k,l}
 
 # move a floating window
 super + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
+#super + ctrl + shift + {Left,Down,Up,Right}
+	bspc node -v {-40 0,0 40,0 -40,40 0}
 
 # bspc node -n 'last.!automatic.local' move node to preselection
 super + space

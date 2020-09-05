@@ -18,8 +18,10 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #2b2e37
-background-alt = #2b2e37
+#background = #2b2e37
+background = #152026
+#background-alt = #2b2e37
+background-alt = #152026
 ;foreground = ${xrdb:color7:#222}
 foreground = #b3cfe5
 foreground-alt = #555
@@ -32,8 +34,9 @@ bground = #00000000
 #orange = #b0552b
 orange = #a44e2f
 dark-orange = #cd4301
-grey = #858585
-green = #b5c649
+#grey = #6b748b
+grey = #64868f
+green = #86b24d
 brown = #7b8641
 
 [bar/bar1]
@@ -41,7 +44,7 @@ enable-ipc = true
 monitor = ${env:MONITOR:HDMI-A-0}
 ;bottom = true
 width = 100%
-height = 13
+height = 18
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
@@ -63,17 +66,18 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = Iosevka:style=Regular:pixelsize=8.5;1
-font-1 = FontAwesome:style=Regular:size=8:antialias=true;1
+font-0 = Iosevka:style=Regular:pixelsize=11;3
+font-1 = FontAwesome:style=Regular:size=13:antialias=true;2
 font-2 = siji:pixelsize=10;1
-font-3 = Iosevka:style=Medium:size=9;3
+font-3 = Iosevka:style=Medium:size=12;3
 font-4 = FontAwesome:style=Regular:size=6:antialias=true;1
-font-5 = Iosevka:style=Italic:pixelsize=8;2
-font-6 = FontAwesome:style=Regular:size=8:antialias=true;2
+font-5 = Iosevka:style=Italic:pixelsize=11;3
+font-6 = FontAwesome:style=Regular:size=11:antialias=true;3
+font-7 = Weather Icons:size=10;1
 
-modules-left = arrow5 player-mpris-tail arrow2 pulseaudio arrow7 change-pulseaudio-profile arrow6
+modules-left = arrow7 weather-icon openweathermap-detailed arrow6 pulseaudio arrow5 player-mpris-tail arrow2 system-bluetooth-bluetoothctl arrow7 change-pulseaudio-profile arrow6 xwindow
 modules-center = bspwm
-modules-right = arrow5 hidden-nodes arrow2 updates-pacman-aurhelper arrow7 vpn-networkmanager-status arrow6 eth arrow5 popup-calendar arrow2 powermenu
+modules-right = xkeyboard arrow5 hidden-nodes arrow2 updates-pacman-aurhelper arrow7 vpn-networkmanager-status arrow6 eth arrow7 cpu arrow6 temperature arrow5 memory arrow2 filesystem arrow5 popup-calendar arrow2 powermenu
 
 tray-position = right
 tray-padding = 1
@@ -93,50 +97,52 @@ wm-restack = bspwm
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[bar/bar2]
-#monitor = ${env:MONITOR:DVI-D-0}
-monitor = ${env:MONITOR:HDMI-A-0}
-bottom = true
-width = 100%
-height = 13
-;offset-x = 1%
-;offset-y = 1%
-radius = 0.0
-fixed-center = true
-background = ${colors.background}
-foreground = ${colors.foreground}
-line-size = 0
-line-color = #f00
-border-size = 0
-border-bottom-size = 0
-border-color = ${colors.background}
-padding-left = 1
-padding-right = 2
-module-margin-left = 1
-module-margin-right = 1
-font-0 = Iosevka:style=Regular:pixelsize=8.5;1
-font-1 = FontAwesome:style=Regular:size=8:antialias=true;1
-font-2 = siji:pixelsize=10;1
-font-3 = Iosevka:style=Medium:size=9;3
-font-4 = Weather Icons:size=10;1
-font-5 = Iosevka:style=Italic:pixelsize=8.5;1
-font-6 = Iosevka Nerd:style=Regular:pixelsize=8.5;1
-
-modules-left = arrow7 weather-icon openweathermap-detailed arrow6 xkeyboard 
-modules-right = system-bluetooth-bluetoothctl arrow7 cpu arrow6 temperature arrow5 memory arrow2 filesystem
-modules-center = xwindow
-cursor-click = pointer
-cursor-scroll = ns-resize
-#separator = "/"
-wm-restack = bspwm
+#[bar/bar2]
+##monitor = ${env:MONITOR:DVI-D-0}
+#monitor = ${env:MONITOR:HDMI-A-0}
+#bottom = true
+#width = 100%
+#height = 16
+#;offset-x = 1%
+#;offset-y = 1%
+#radius = 0.0
+#fixed-center = true
+#background = ${colors.background}
+#foreground = ${colors.foreground}
+#line-size = 0
+#line-color = #f00
+#border-size = 0
+#border-bottom-size = 0
+#border-color = ${colors.background}
+#padding-left = 1
+#padding-right = 2
+#module-margin-left = 1
+#module-margin-right = 1
+#font-0 = Iosevka:style=Regular:pixelsize=12;3
+#font-1 = FontAwesome:style=Regular:size=11:antialias=true;2
+#font-2 = siji:pixelsize=10;1
+#font-3 = Iosevka:style=Medium:size=9;3
+#font-4 = Weather Icons:size=10;1
+#font-5 = Iosevka:style=Italic:pixelsize=12;3
+#font-6 = Iosevka Nerd:style=Regular:pixelsize=8.5;1
+#
+#modules-left = arrow7 weather-icon openweathermap-detailed arrow6 xkeyboard 
+#modules-right = system-bluetooth-bluetoothctl arrow7 cpu arrow6 temperature arrow5 memory arrow2 filesystem
+#modules-center = xwindow
+#cursor-click = pointer
+#cursor-scroll = ns-resize
+##separator = "/"
+#wm-restack = bspwm
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:150:...%
+label = %title:0:50:...%
 #label = %title%
-format-foreground = #b3cfe5
+#format-foreground = #b3cfe5
+format-foreground = #e86f43
 label-padding = 1
 label-font = 1
+format-padding = 40
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -166,7 +172,8 @@ label-unmounted-foreground = #447c54
 #label-mounted-background = #447c54
 #label-mounted-offset = 12
 #format-offset = 12
-label = %{A1:alacritty --config-file $HOME/.config/alacritty/htop.yml --class Htop,Htop -t htop -e htop -s PERCENT_CPU &:}%percentage:2%%%{A}
+#label = %{A1:alacritty --config-file $HOME/.config/alacritty/htop.yml --class Htop,Htop -t htop -e htop -s PERCENT_CPU &:}%percentage:2%%% {A}
+format-padding = 2
 
 [module/bspwm]
 type = internal/bspwm
@@ -174,17 +181,17 @@ format = <label-state> <label-mode>
 #ws-icon-0 = 1;
 #ws-icon-1 = 2;
 ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
 ws-icon-3 = 4;
-ws-icon-4 = 5;
+ws-icon-4 = 5;
 ws-icon-5 = 6;
-ws-icon-6 = 7;
-ws-icon-7 = 8;
-ws-icon-8 = 9;
-ws-icon-9 = 10;
-ws-icon-10 = 11;
-ws-icon-11 = 12;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+ws-icon-10 = 11;
+ws-icon-11 = 12;
 ws-icon-default = 
 
 label-focused = %icon%
@@ -196,11 +203,12 @@ label-focused-underline= #cd4301
 label-focused-padding = 1
 label-occupied = %icon%
 label-occupied-padding = 1
+label-occupied-foreground = #89bec6
 label-urgent = %icon%!
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
 label-empty = %icon%
-label-empty-foreground = ${colors.foreground-alt}
+label-empty-foreground = #2b3439
 label-empty-padding = 1
 ; Separator in between workspaces
 ; label-separator = |
@@ -286,7 +294,8 @@ wrapping-scroll = false
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+#format-prefix = " "
+format-prefix = "   "
 format-prefix-foreground = #000000
 #format-underline = ${colors.foreground-alt}
 #label = %percentage:2%%
@@ -294,22 +303,24 @@ label = %{A1:alacritty --config-file $HOME/.config/alacritty/htop.yml --class Ht
 #format-background = #085394
 format-background = ${colors.orange}
 format-foreground = #000000
-format-padding = 1
-format-offset = -12
+format-padding = 2
+format-offset = -14
+format-font = 7
 
 [module/memory]
 type = internal/memory
 interval = 2
+#format-prefix = " "
 format-prefix = " "
 format-prefix-foreground = #000000
 #format-underline = ${colors.foreground-alt}
 #label = %percentage_used%%
 label = %{A1:alacritty --config-file $HOME/.config/alacritty/htop.yml --class Htop,Htop -t htop -e htop -s PERCENT_MEM &:}%percentage_used%%%{A}
 ;label = RAM %gb_used%/%gb_free%
-format-background = #6b748b
+format-background = ${colors.grey}
 format-foreground = #000000
-format-padding = 1
-format-offset = -12
+format-padding = 2
+format-offset = -14
 
 ;[module/wlan]
 ;type = internal/network
@@ -344,7 +355,7 @@ format-connected = <label-connected>
 #format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.brown}
 #label-connected = "eth up"
-label-connected = %{F#b5c649}%{F-}%{F#858585}%downspeed:9%%{F-}%{F#b5c649} %{F-}%{F#858585}%upspeed:9%%{F-}
+label-connected = %{F#b5c649} %{F-}%{F#858585}%downspeed:9%%{F-}%{F#b5c649} %{F-}%{F#858585}%upspeed:9%%{F-}
 ;label-connected = %linkspeed%
 #format-connected-background = #085394 
 #format-connected-foreground = #b3c3eb
@@ -354,6 +365,7 @@ format-disconnected = <label-disconnected>
 label-disconnected = "eth down"
 label-disconnected-foreground = ${colors.foreground-alt}
 format-connected-offset = -5
+format-padding = 2
 
 #[module/date]
 #type = internal/date
@@ -373,7 +385,8 @@ type = internal/pulseaudio
 format-volume = <label-volume> <bar-volume>
 #click-right = pavucontrol &
 #label-volume =  %percentage%%
-label-volume = %{A1:pavucontrol &:} %percentage%%%{A}
+#label-volume = %{A1:pavucontrol &:} %percentage%%%{A}
+label-volume = %{A1:pavucontrol &:} %percentage%%%{A}
 ;label-volume-foreground = ${root.foreground}
 label-volume-foreground = ${colors.foreground}
 ;label-muted =  muted
@@ -396,6 +409,7 @@ bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
+format-font = 7
 
 ;[module/alsa]
 ;type = internal/alsa
@@ -478,7 +492,7 @@ ramp-0 = 
 ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.brown}
-
+format-padding = 1
 [module/powermenu]
 type = custom/menu
 expand-right = true
@@ -510,20 +524,23 @@ type = custom/script
 exec = ~/.config/polybar/vpn-networkmanager-status.sh
 interval = 10
 ;format-prefix = " "
-format-prefix = " "
+#format-prefix = " "
+format-prefix = "   "
 #format-underline = ${colors.foreground-alt}
 format-prefix-foreground = #000000
 #format-background = #0087af
 format-background = ${colors.orange}
 format-foreground = #000000
-format-offset = -12
+format-offset = -14
+format-font = 7
+format-padding = 2
 
 [module/system-bluetooth-bluetoothctl]
 type = custom/script
 exec = ~/.config/polybar/system-bluetooth-bluetoothctl.sh
 tail = true
 #click-left = ~/polybar-scripts/system-bluetooth-bluetoothctl.sh --toggle &
-format-font = 2
+format-font = 7
 #format-foreground = #cd4301
 
 [module/change-pulseaudio-profile]
@@ -536,8 +553,8 @@ format-font = 7
 #format-foreground = #f5a70a
 format-foreground = #000000
 format-background = ${colors.orange}
-format-offset = -12
-format-padding = 1
+format-offset = -14
+format-padding = 2
 
 [module/hidden-nodes]
 type = custom/script
@@ -549,10 +566,10 @@ click-left = ~/.config/bspwm/hidden-script.sh
 #format-foreground = #f5a70a
 format-prefix = " "
 #format-prefix-foreground = ${colors.brown}
-format-background = #6b748b
+format-background = ${colors.grey}
 format-foreground = #000000
-format-padding = 1
-format-offset = -12
+format-padding = 2
+format-offset = -14
 format-prefix-foreground = #000000
 
 [module/arrow1]
@@ -562,7 +579,7 @@ type = custom/text
 #content = "%{T4}%{T-}"
 #content = "%{T4}%{T-}"
 content = "%{T4-}%{T-}"
-content-foreground = #6b748b 
+content-foreground = ${colors.grey} 
 #content-background = #292d3e
 content-background = #0087af
 content-padding = 0
@@ -576,10 +593,11 @@ type = custom/text
 #content = "%{T4}%{T-}"
 #content-font = 2
 content = "%{T4}%{T-}"
-content-background = #6b748b 
-content-foreground = #292d3e
+content-background = ${colors.grey} 
+#content-foreground = #292d3e
+content-foreground = ${colors.background}
 content-padding = 0
-content-offset = -12
+content-offset = -14
 
 [module/arrow3]
 type = custom/text
@@ -612,8 +630,9 @@ type = custom/text
 content = "%{T4}%{T-}"
 #content = "%{T4}%{T-}"
 #content-font = 2
-content-background = #292d3e 
-content-foreground = #6b748b
+#content-background = #292d3e 
+content-background = ${colors.background} 
+content-foreground = ${colors.grey}
 content-padding = 0
 #content-offset = -12
 
@@ -624,10 +643,10 @@ type = custom/text
 #content = "%{T4}%{T-}"
 #content = "%{T4}%{T-}"
 content = "%{T4-}%{T-}"
-content-foreground = #2b2e37 
+content-foreground = ${colors.background} 
 content-background = ${colors.orange}
 content-padding = 0
-content-offset = -12
+content-offset = -14
 
 [module/arrow7]
 type = custom/text
@@ -636,7 +655,7 @@ type = custom/text
 #content = "%{T4}%{T-}"
 #content = "%{T4}%{T-}"
 content = "%{T4-}%{T-}"
-content-background = #2b2e37 
+content-background = ${colors.background} 
 content-foreground = ${colors.orange}
 content-padding = 0
 #content-offset = -12
@@ -647,12 +666,15 @@ exec = ~/.config/polybar/popup-calendar.sh
 interval = 5
 #click-left = ~/.config/polybar/popup-calendar.sh --popup &
 click-left = gsimplecal &
-format-prefix = "  "
+#format-prefix = "  "
+format-prefix = "   "
 #format-prefix-foreground = #000000 
 #format-background = #085394 
-format-background = #6b748b 
+format-background = ${colors.grey} 
 format-foreground = #000000
-format-offset = -12
+format-offset = -14
+format-font = 7
+format-padding = 2
 
 [module/updates-pacman-aurhelper]
 type = custom/script
@@ -661,19 +683,21 @@ interval = 600
 format-prefix = " "
 format-prefix-foreground = ${colors.brown}
 format-offset = -5
-click-left = alacritty --config-file $HOME/.config/alacritty/htop.yml --class Htop,Htop --hold -e checkupdates &
+click-left = alacritty --config-file $HOME/.config/alacritty/htop.yml --class AUR,AUR --hold -e checkupdates &
+format-padding = 1
 
 [module/openweathermap-detailed]
 type = custom/script
 exec = ~/.config/polybar/openweathermap-detailed.sh
 interval = 600
 #label-font = 5
-format-offset = -12
-#format-background = #6b748b
+format-offset = -14
+#format-background = ${colors.grey}
 format-background = ${colors.orange}
 format-foreground = #000000
 format-font = 6
 click-left = chromium https://openweathermap.org/city/3834813 &
+format-padding = 1
 
 [module/player-mpris-tail]
 type = custom/script
@@ -682,10 +706,10 @@ tail = true
 click-middle = ~/.config/polybar/player-mpris-tail.py previous -b vlc -b chromium &
 click-right = ~/.config/polybar/player-mpris-tail.py next -b vlc -b chromium &
 click-left = ~/.config/polybar/player-mpris-tail.py play-pause -b vlc -b chromium &
-format-background = #6b748b
+format-background = ${colors.grey}
 format-foreground = #000000
-format-offset = -12
-format-padding = 1
+format-offset = -14
+format-padding = 2
 format-font = 6
 
 [module/weather-icon]
@@ -693,8 +717,8 @@ type = custom/text
 content = 
 content-background = ${colors.orange}
 content-foreground = #000000
-content-font = 5
-content-offset = -12
+content-font = 8
+content-offset = -14
 content-padding = 1
 
 [settings]

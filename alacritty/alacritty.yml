@@ -189,10 +189,13 @@ colors:
   #  background: '0x000000'
   #  background: '0x041e2d' BLUEISH, used with red-bluewallpaper
   #  background: '0x0a2431' GOOD ONE
-    background: '0x2b2e37'
+  #  background: '0x2b2e37'
+  #background: '0x131c23'
+    background: '0x19262e'
     #foreground: '0xeaeaea'
     #foreground: '0xbbc5ff'
     foreground: '0xe0e9f0'
+    #foreground: '0xb9d7d9'
 
     # Bright and dim foreground colors
     #
