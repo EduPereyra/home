@@ -109,7 +109,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Iosevka
+    family: Envy Code R
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -148,12 +148,12 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 9
+  size: 12
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
-  #offset:
-  #  x: 0
+  offset:
+    x: -1
   #  y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with
@@ -191,7 +191,8 @@ colors:
   #  background: '0x0a2431' GOOD ONE
   #  background: '0x2b2e37'
   #background: '0x131c23'
-    background: '0x19262e'
+  #background: '0x19262e'
+    background: '0x152026'
     #foreground: '0xeaeaea'
     #foreground: '0xbbc5ff'
     foreground: '0xe0e9f0'
@@ -298,7 +299,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 1.0
+background_opacity: 0.8
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -316,7 +317,7 @@ cursor:
   #   - ▇ Block
   #   - _ Underline
   #   - | Beam
-  style: Beam
+  style: Block
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
