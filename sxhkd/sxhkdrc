@@ -32,7 +32,7 @@ super + u
 
 # make sxhkd reload its configuration files:
 super + Escape
-	pkill -USR1 -x sxhkd
+	pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'
 #
 # bspwm hotkeys
 #
@@ -74,8 +74,10 @@ super + shift + m
 	bspc node -g hidden
 
 # script to show hidden windows with rofi
-alt + shift + Tab
-	~/.config/bspwm/hidden-script.sh	
+#alt + shift + Tab
+alt + grave
+#	~/.config/bspwm/hidden-script.sh	
+	~/.config/bspwm/test.sh	
 #
 # focus/swap
 #
@@ -100,7 +102,7 @@ super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
-super + {dead_grave,Tab}
+super + {grave,Tab}
 	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
@@ -116,12 +118,12 @@ super + {o,i}
 super + {_,shift + }{1,2,3,4,5,6,7,8,9,0}
 	bspc {desktop -f,node -d} '^{1,2,3,4,5,6,7,8,9,10}'
 
-super + {_,shift + }{F11,F12}
-	bspc {desktop -f,node -d} '{11,12}'
+#super + {_,shift + }{F11,F12}
+#	bspc {desktop -f,node -d} '{11,12}'
 
 #No se porque super+shift+F12 es tomado como la tecla derecha...
-super + shift + Right
-	bspc node -d 12
+#super + shift + Right
+#	bspc node -d 12
 
 # focus or send to the given desktop
 #super + {_,shift + }{1-9,0}

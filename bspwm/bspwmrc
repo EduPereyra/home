@@ -1,6 +1,6 @@
 #! /bin/sh
 sxhkd &
-picom &
+picom --experimental-backends &
 nitrogen --restore &
 #solaar &
 copyq &
@@ -10,17 +10,12 @@ flashfocus &
 
 # Monitors
 
-#Vertical
-#xrandr --output HDMI-A-0 --primary --mode 2560x1080 --pos 0x304 --rotate normal --output DVI-D-0 --mode 1920x1080 --pos 2560x0 --rotate right --output DisplayPort-0 --off --output DisplayPort-1 --off
-
-#Horizontal
-#xrandr --output HDMI-A-0 --primary --mode 2560x1080 --pos 0x0 --rotate normal --output DVI-D-0 --mode 1920x1080 --pos 2560x0 --rotate normal --output DisplayPort-0 --off --output DisplayPort-1 --off
-
 #xrandr --output HDMI-A-0 --primary --mode 3840x2160 --pos 0x0 --rotate normal --output DVI-D-0 --mode 1920x1080 --pos 3840x0 --output DisplayPort-0 --off --output DisplayPort-1 --off
-xrandr --output HDMI-A-0 --primary --auto --output DVI-D-0 --auto --right-of HDMI-A-0
+#xrandr --output HDMI-A-0 --primary --auto --output DVI-D-0 --auto --right-of HDMI-A-0
+xrandr --output DisplayPort-0 --primary --mode 3840x2160 --pos 0x0 --rotate normal --output HDMI-A-0 --mode 3840x2160 --pos 3840x0 --rotate normal --output DVI-D-0 --off
 
-bspc monitor HDMI-A-0 -d 1 2 3 4 5 6 7 8 9 10
-bspc monitor DVI-D-0 -d 11 12
+bspc monitor DisplayPort-0 -d 1 2 3 4 5
+bspc monitor HDMI-A-0 -d 6 7 8 9 10
 
 #Polybar
 ~/.config/polybar/launch.sh
@@ -28,7 +23,7 @@ bspc monitor DVI-D-0 -d 11 12
 # Configuration
 bspc config border_width        1
 bspc config window_gap          6
-bspc config -m DVI-D-0 window_gap 0
+#bspc config -m DVI-D-0 window_gap 0
 bspc config top_padding         -1
 bspc config bottom_padding	-4	
 bspc config right_padding	-4	
@@ -76,17 +71,18 @@ bspc config urgent_border_color		"#dd2727"
 #bspc rule -a Thunar state=floating
 bspc rule -a Galculator state=floating
 #bspc rule -a vlc state=floating
-bspc rule -a Evolution-alarm-notify state=floating
+#bspc rule -a Evolution-alarm-notify state=floating
 #bspc rule -a Yad state=floating
 bspc rule -a Htop state=floating rectangle=1011x1024+2428+284
-#bspc rule -a Zathura desktop='^11' state=tiled follow=on
-bspc rule -a Spotify desktop='^9'
-bspc rule -a Vncviewer desktop='^6' follow=on
+#bspc rule -a Zathura desktop='^9' state=tiled follow=on
+bspc rule -a Spotify desktop='^4'
+bspc rule -a Vncviewer desktop='^5' follow=on
 bspc rule -a 'Microsoft Teams - Preview' desktop='^10' follow=off
-bspc rule -a obs desktop='^9' state=tiled
+bspc rule -a obs desktop='^4' state=tiled
 bspc rule -a AUR state=floating rectangle=651x564+2397+23
-bspc rule -a org.remmina.Remmina state=tiling desktop='^6'
+bspc rule -a org.remmina.Remmina state=tiling desktop='^5'
 bspc rule -a Dragon-drag-and-drop sticky=on
+bspc rule -a copyq  state=floating 
 
 # Scratchpad (term alacritty)
 bspc rule -a dropdown sticky=on state=floating hidden=on rectangle=902x458+877+324
