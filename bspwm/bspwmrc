@@ -74,7 +74,7 @@ bspc rule -a Galculator state=floating
 #bspc rule -a Evolution-alarm-notify state=floating
 #bspc rule -a Yad state=floating
 bspc rule -a Htop state=floating rectangle=1011x1024+2428+284
-#bspc rule -a Zathura desktop='^9' state=tiled follow=on
+bspc rule -a Zathura state=tiled follow=on
 bspc rule -a Spotify desktop='^4'
 bspc rule -a Vncviewer desktop='^5' follow=on
 bspc rule -a 'Microsoft Teams - Preview' desktop='^10' follow=off
