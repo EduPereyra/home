@@ -40,11 +40,81 @@ grey = #64868f
 green = #86b24d
 brown = #7b8641
 gruvbox1 = #ffd7af
+#gruvbox2 = #3c3837
+gruvbox2 = #2e2e2e
+gruvbox-orange = #fe8019
+gruvbox-blue = #87afaf
+gruvbox-green = #afaf00
+gruvbox-green2 = #87af87
 
 [bar/bar1]
 enable-ipc = true
+#monitor = ${env:MONITOR:HDMI-A-0}
+#monitor = ${env:MONITOR:DisplayPort-0}
+monitor = ${env:MONITOR:DP-1}
+#bottom = true
+width = 100%
+height = 14
+;offset-x = 1%
+;offset-y = 1%
+radius = 0.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+line-color = #f00
+
+border-size = 0
+border-bottom-size = 0
+border-color = ${colors.background}
+
+padding-left = 2
+padding-right = 0
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = Iosevka:style=Regular:pixelsize=10;3
+font-1 = FontAwesome:style=Regular:size=12:antialias=true;2
+font-2 = siji:pixelsize=10;1
+font-3 = Iosevka:style=Medium:size=12;3
+font-4 = FontAwesome:style=Regular:size=5:antialias=true;1
+font-5 = Iosevka:style=Italic:pixelsize=10;3
+font-6 = FontAwesome:style=Regular:size=10:antialias=true;3
+font-7 = Weather Icons:size=10;1
+font-8 = Envy Code R:size=9:antialias=false;2
+font-9 = Envy Code R:style=bold:size=9:antialias=true;2
+font-10 = Envy Code R:style=italic:size=0:antialias=true;2
+
+modules-left = powermenu arrow7 weather-icon openweathermap-detailed arrow6 pulseaudio arrow5 player-mpris-tail arrow2 system-bluetooth-bluetoothctl arrow7 change-pulseaudio-profile arrow6 bspwm
+modules-center = xwindow
+modules-right = xkeyboard arrow5 hidden-nodes arrow2 updates-pacman-aurhelper arrow7 vpn-networkmanager-status arrow6 eth arrow7 cpu arrow6 temperature arrow5 memory arrow2 filesystem arrow5 popup-calendar arrow2 
+
+tray-position = right
+tray-padding = 2
+;tray-background = #0063ff
+
+#wm-restack = bspwm
+;wm-restack = i3
+
+;;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[bar/bar2]
+enable-ipc = true
 monitor = ${env:MONITOR:HDMI-A-0}
-;bottom = true
+#monitor = ${env:MONITOR:HDMI-1}
+#bottom = true
 width = 100%
 height = 18
 ;offset-x = 1%
@@ -62,7 +132,7 @@ border-size = 0
 border-bottom-size = 0
 border-color = ${colors.background}
 
-padding-left = 1
+padding-left = 5
 padding-right = 0
 
 module-margin-left = 1
@@ -78,17 +148,26 @@ font-6 = FontAwesome:style=Regular:size=11:antialias=true;3
 font-7 = Weather Icons:size=10;1
 font-8 = Envy Code R:size=10:antialias=false;2
 font-9 = Envy Code R:style=bold:size=10:antialias=true;2
+font-10 = Envy Code R:style=italic:size=10:antialias=true;2
 
-modules-left = arrow7 weather-icon openweathermap-detailed arrow6 pulseaudio arrow5 player-mpris-tail arrow2 system-bluetooth-bluetoothctl arrow7 change-pulseaudio-profile arrow6 xwindow
-modules-center = bspwm
-modules-right = xkeyboard arrow5 hidden-nodes arrow2 updates-pacman-aurhelper arrow7 vpn-networkmanager-status arrow6 eth arrow7 cpu arrow6 temperature arrow5 memory arrow2 filesystem arrow5 popup-calendar arrow2 
-#POWERMENU
+#BSPWM
+#modules-left = bspwm arrow5 hidden-nodes arrow2 xkeyboard
 
-tray-position = right
-tray-padding = 1
+#KDE modules center is the same for both
+modules-left = xkeyboard
+modules-center = xwindow
+
+#BSPWM
+#modules-right = res_mon arrow5 popup-calendar arrow2 
+
+#KDE
+modules-right = res_mon arrow5 popup-calendar arrow2 
+
+#tray-position = right
+#tray-padding = 2
 ;tray-background = #0063ff
 
-wm-restack = bspwm
+#wm-restack = bspwm
 ;wm-restack = i3
 
 ;;override-redirect = true
@@ -101,43 +180,6 @@ wm-restack = bspwm
 
 cursor-click = pointer
 cursor-scroll = ns-resize
-
-#[bar/bar2]
-##monitor = ${env:MONITOR:DVI-D-0}
-#monitor = ${env:MONITOR:HDMI-A-0}
-#bottom = true
-#width = 100%
-#height = 16
-#;offset-x = 1%
-#;offset-y = 1%
-#radius = 0.0
-#fixed-center = true
-#background = ${colors.background}
-#foreground = ${colors.foreground}
-#line-size = 0
-#line-color = #f00
-#border-size = 0
-#border-bottom-size = 0
-#border-color = ${colors.background}
-#padding-left = 1
-#padding-right = 2
-#module-margin-left = 1
-#module-margin-right = 1
-#font-0 = Iosevka:style=Regular:pixelsize=12;3
-#font-1 = FontAwesome:style=Regular:size=11:antialias=true;2
-#font-2 = siji:pixelsize=10;1
-#font-3 = Iosevka:style=Medium:size=9;3
-#font-4 = Weather Icons:size=10;1
-#font-5 = Iosevka:style=Italic:pixelsize=12;3
-#font-6 = Iosevka Nerd:style=Regular:pixelsize=8.5;1
-#
-#modules-left = arrow7 weather-icon openweathermap-detailed arrow6 xkeyboard 
-#modules-right = system-bluetooth-bluetoothctl arrow7 cpu arrow6 temperature arrow5 memory arrow2 filesystem
-#modules-center = xwindow
-#cursor-click = pointer
-#cursor-scroll = ns-resize
-##separator = "/"
-#wm-restack = bspwm
 
 [module/xwindow]
 type = internal/xwindow
@@ -187,42 +229,46 @@ label-mounted-font = 9
 [module/bspwm]
 type = internal/bspwm
 format = <label-state> <label-mode>
-#ws-icon-0 = 1;
-#ws-icon-1 = 2;
-ws-icon-0 = 1;
+#ws-icon-0 = 1;
+ws-icon-0 = 1;
 ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+#ws-icon-5 = 6;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
 ws-icon-7 = 8;
-ws-icon-8 = 9;
-ws-icon-9 = 10;
-ws-icon-10 = 11;
-ws-icon-11 = 12;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+#ws-icon-10 = 11;
+#ws-icon-11 = 12;
 ws-icon-default = 
 
 label-focused = %icon%
-label-focused-background = ${colors.background-alt}
-#label-focused-background = #0087af
-label-focused-foreground = ${colors.color1}
-#label-focused-foreground = #9e3605
-label-focused-underline= #cd4301
+#label-focused-background = ${colors.background-alt}
+#label-focused-background = ${colors.gruvbox2}
+#label-focused-foreground = ${colors.color1}
+label-focused-foreground = ${colors.gruvbox-orange}
+#label-focused-underline= #cd4301
 label-focused-padding = 1
 label-occupied = %icon%
 label-occupied-padding = 1
-label-occupied-foreground = #89bec6
+#label-occupied-foreground = #89bec6
+label-occupied-foreground = ${colors.gruvbox-blue}
+#label-occupied-background = ${colors.gruvbox2}
 label-urgent = %icon%!
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
 label-empty = %icon%
 label-empty-foreground = #2b3439
+#label-empty-background = ${colors.gruvbox2}
 label-empty-padding = 1
 ; Separator in between workspaces
 ; label-separator = |
 pin-workspaces = false
 wrapping-scroll = false
+#format-padding = 5
 
 #[module/i3]
 #type = internal/i3
@@ -304,37 +350,39 @@ wrapping-scroll = false
 type = internal/cpu
 interval = 2
 #format-prefix = " "
-format-prefix = "   "
-format-prefix-foreground = #111111
+#format-prefix = "   "
+format-prefix = "cpu "
+format-prefix-foreground = ${colors.gruvbox-blue}
 #format-underline = ${colors.foreground-alt}
 #label = %percentage:2%%
 #label = %{A1:alacritty --config-file $HOME/.config/alacritty/htop.yml --class Htop,Htop -t htop -e htop -s PERCENT_CPU &:}%percentage:2%%%{A}
-label = %{A1:alacritty --config-file $HOME/.config/alacritty/htop.yml --class Htop,Htop -t htop -e htop -s PERCENT_CPU &:}%{A2:alacritty --class Htop,Htop -t htop -e gotop &:}%percentage:2%%%{A}%{A}
+label = %{A1:alacritty --config-file $HOME/.config/alacritty/htop.yml --class Htop,Htop -t htop -e htop -s PERCENT_CPU &:}%{A2:alacritty --class Htop,Htop -t htop -e gotop &:}%percentage:2% %%{A}%{A}
 #format-background = #085394
-format-background = ${colors.color1}
-#format-foreground = #000000
+format-background = ${colors.gruvbox2}
+format-foreground = ${colors.gruvbox1}
 format-padding = 2
 format-offset = -14
 format-font = 9
 label-font = 9
-format-prefix-font = 7
+#format-prefix-font = 7
 
 [module/memory]
 type = internal/memory
 interval = 2
-#format-prefix = " "
-format-prefix = "  "
-format-prefix-foreground = #000000
+format-prefix = "mem "
+#format-prefix = "  "
+format-prefix-foreground = ${colors.gruvbox-blue}
 #format-underline = ${colors.foreground-alt}
 #label = %percentage_used%%
-label = %{A1:alacritty --config-file $HOME/.config/alacritty/htop.yml --class Htop,Htop -t htop -e htop -s PERCENT_MEM &:}%{A2:alacritty --class Htop,Htop -t htop -e gotop &:}%percentage_used%%%{A}%{A}
+label = %{A1:alacritty --config-file $HOME/.config/alacritty/htop.yml --class Htop,Htop -t htop -e htop -s PERCENT_MEM &:}%{A2:alacritty --class Htop,Htop -t htop -e gotop &:}%percentage_used% %%{A}%{A}
 ;label = RAM %gb_used%/%gb_free%
-format-background = ${colors.grey}
-format-foreground = #000000
+format-background = ${colors.gruvbox2}
+format-foreground = ${colors.gruvbox1}
 format-padding = 2
 format-offset = -14
 format-font = 9
 label-font = 9
+#format-prefix-font = 7
 
 ;[module/wlan]
 ;type = internal/network
@@ -515,28 +563,63 @@ format-font = 9
 [module/powermenu]
 type = custom/menu
 expand-right = true
-format-spacing = 1
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
+format-spacing = 2
+format-right-padding = 3
+padding-left = 10
+label-open = 
+label-open-font = 7
+label-open-foreground = ${colors.gruvbox-blue}
+label-close = 
+label-close-font = 7
 label-close-foreground = ${colors.secondary}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
 menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
+menu-0-0-exec = #powermenu.open.1
 menu-0-1 = power off
-menu-0-1-exec = menu-open-2
+menu-0-1-exec = #powermenu.open.2
+menu-0-2 = hibernate
+menu-0-2-exec = #powermenu.open.3
 
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
+menu-1-0 = REBOOT
+menu-1-0-exec = sudo reboot
+menu-1-1 = cancel
+menu-1-1-exec = #powermenu.open.0
 
-menu-2-0 = power off
+menu-2-0 = POWER OFF
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+menu-2-1-exec = #powermenu.open.0
+
+menu-3-0 = HIBERNATE
+menu-3-0-exec = sudo systemctl hibernate
+menu-3-1 = cancel
+menu-3-1-exec = #powermenu.open.0
+
+[module/res_mon]
+type = custom/menu
+expand-right = true
+format-spacing = 2
+format-right-padding = 3
+padding-left = 10
+label-open = 
+label-open-font = 7
+label-open-foreground = ${colors.gruvbox-blue}
+label-close = 
+label-close-font = 7
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = 4K
+menu-0-0-exec = killall -q picom; xrandr --output DisplayPort-0 --primary --mode 3840x2160 --pos 0x0 --rotate normal --output HDMI-A-0 --mode 3840x2160 --pos 3840x0 --rotate normal --output DVI-D-0 --off;~/.config/polybar/launch.sh; picom --experimental-backends
+
+menu-0-1 = 2K
+menu-0-1-exec = killall -q picom; xrandr --output DisplayPort-0 --primary --mode 3840x2160 --pos 0x0 --rotate normal --output HDMI-A-0 --mode 2560x1440 --pos 3840x0 --rotate normal --output DVI-D-0 --off;~/.config/polybar/launch.sh; picom --experimental-backends
+
+menu-0-2 = Full HD
+menu-0-2-exec = killall -q picom; xrandr --output DisplayPort-0 --primary --mode 3840x2160 --pos 0x0 --rotate normal --output HDMI-A-0 --mode 1920x1080 --pos 3840x0 --rotate normal --output DVI-D-0 --off;~/.config/polybar/launch.sh; picom --experimental-backends
 
 [module/vpn-networkmanager-status]
 type = custom/script
@@ -547,9 +630,10 @@ interval = 10
 format-prefix = "  "
 #format-underline = ${colors.foreground-alt}
 #format-prefix-foreground = #000000
-format-prefix-foreground = #000000
+format-prefix-foreground = ${colors.gruvbox-blue}
 #format-background = #0087af
-format-background = ${colors.color1}
+format-background = ${colors.gruvbox2}
+format-foreground = ${colors.gruvbox1}
 #format-foreground = #000000
 format-offset = -14
 label-font = 9
@@ -571,8 +655,8 @@ interval = 1
 click-left = ~/.config/polybar/change-pulseaudio-profile.sh --toggle &
 format-font = 7
 #format-foreground = #f5a70a
-format-foreground = #000000
-format-background = ${colors.color1}
+format-foreground = ${colors.gruvbox1}
+format-background = ${colors.gruvbox2}
 format-offset = -14
 format-padding = 2
 
@@ -586,11 +670,11 @@ click-left = ~/.config/bspwm/hidden-script.sh
 #format-foreground = #f5a70a
 format-prefix = " "
 #format-prefix-foreground = ${colors.brown}
-format-background = ${colors.grey}
-format-foreground = #000000
+format-background = ${colors.gruvbox2}
+format-foreground = ${colors.gruvbox1}
 format-padding = 2
 format-offset = -14
-format-prefix-foreground = #000000
+format-prefix-foreground = ${colors.gruvbox-blue}
 label-font = 9
 
 [module/arrow1]
@@ -614,8 +698,7 @@ type = custom/text
 #content = "%{T4}%{T-}"
 #content-font = 2
 content = "%{T4}%{T-}"
-content-background = ${colors.grey} 
-#content-foreground = #292d3e
+content-background = ${colors.gruvbox2} 
 content-foreground = ${colors.background}
 content-padding = 0
 content-offset = -14
@@ -653,7 +736,7 @@ content = "%{T4}%{T-}"
 #content-font = 2
 #content-background = #292d3e 
 content-background = ${colors.background} 
-content-foreground = ${colors.grey}
+content-foreground = ${colors.gruvbox2}
 content-padding = 0
 #content-offset = -12
 
@@ -665,7 +748,7 @@ type = custom/text
 #content = "%{T4}%{T-}"
 content = "%{T4-}%{T-}"
 content-foreground = ${colors.background} 
-content-background = ${colors.color1}
+content-background = ${colors.gruvbox2}
 content-padding = 0
 content-offset = -14
 
@@ -677,7 +760,7 @@ type = custom/text
 #content = "%{T4}%{T-}"
 content = "%{T4-}%{T-}"
 content-background = ${colors.background} 
-content-foreground = ${colors.color1}
+content-foreground = ${colors.gruvbox2}
 content-padding = 0
 #content-offset = -12
 
@@ -689,10 +772,11 @@ interval = 5
 click-left = gsimplecal &
 #format-prefix = "  "
 format-prefix = " "
+format-prefix-foreground = ${colors.gruvbox-blue}
 #format-prefix-foreground = #000000 
 #format-background = #085394 
-format-background = ${colors.grey} 
-format-foreground = #000000
+format-background = ${colors.gruvbox2} 
+format-foreground = ${colors.gruvbox1} 
 format-offset = -14
 label-font = 10
 format-padding = 2
@@ -714,9 +798,8 @@ exec = ~/.config/polybar/openweathermap-detailed.sh
 interval = 600
 #label-font = 5
 format-offset = -14
-#format-background = ${colors.grey}
-format-background = ${colors.color1}
-#format-foreground = #000000
+format-background = ${colors.gruvbox2}
+format-foreground =${colors.gruvbox1} 
 format-font = 9
 click-left = chromium https://openweathermap.org/city/3834813 &
 format-padding = 1
@@ -728,17 +811,17 @@ tail = true
 click-middle = ~/.config/polybar/player-mpris-tail.py previous -b vlc -b chromium &
 click-right = ~/.config/polybar/player-mpris-tail.py next -b vlc -b chromium &
 click-left = ~/.config/polybar/player-mpris-tail.py play-pause -b vlc -b chromium &
-format-background = ${colors.grey}
-format-foreground = #000000
+format-background = ${colors.gruvbox2}
+format-foreground = ${colors.gruvbox-blue}
 format-offset = -14
 format-padding = 2
-format-font = 10
+format-font = 11
 
 [module/weather-icon]
 type = custom/text
 content = 
-content-background = ${colors.color1}
-content-foreground = #000000
+content-background = ${colors.gruvbox2}
+content-foreground = ${colors.gruvbox-blue}
 content-font = 8
 content-offset = -14
 content-padding = 1

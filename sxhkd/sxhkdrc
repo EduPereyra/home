@@ -1,7 +1,10 @@
 #
 # wm independent hotkeys
 #
-
+# Volume controls
+XF86AudioLowerVolume 
+	#pactl set-sink-volume @DEFAULT_SINK@ -5% 
+	notify-send  "test"
 # terminal emulator
 super + Return
 	alacritty
@@ -15,7 +18,7 @@ super + shift + b
 
 # program launcher
 #super + @space
-super + d
+alt + space
 #dmenu_run
 	rofi -show run
 # rofi -show window
@@ -30,6 +33,12 @@ Print
 super + u
 	~/Scripts/scratchpad.sh dropdown					
 
+# Joplin
+super + n
+	~/Scripts/scratchpad.sh joplin					
+# Spotify
+super + i
+	~/Scripts/scratchpad.sh spotify					
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'
@@ -42,7 +51,7 @@ super + alt + {q,r}
 	bspc {quit,wm -r}
 
 # close and kill
-super + {_,shift + }w
+super + {_,shift + }q
 	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
@@ -75,7 +84,7 @@ super + shift + m
 
 # script to show hidden windows with rofi
 #alt + shift + Tab
-alt + grave
+alt + dead_grave
 #	~/.config/bspwm/hidden-script.sh	
 	~/.config/bspwm/test.sh	
 #
@@ -102,7 +111,7 @@ super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
-super + {grave,Tab}
+super + {dead_grave,Tab}
 	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
@@ -147,19 +156,19 @@ super + {_,shift + }{1,2,3,4,5,6,7,8,9,0}
 #
 
 # preselect the direction
-super + ctrl + {h,j,k,l}
+super + alt + {h,j,k,l}
 	bspc node -p {west,south,north,east}
 
 # preselect the ratio
-super + ctrl + {1-9}
+super + alt + {1-9}
 	bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
-super + ctrl + space
+super + alt + a
 	bspc node -p cancel
 
 # cancel the preselection for the focused desktop
-super + ctrl + shift + space
+super + alt + shift + a
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 #
@@ -168,7 +177,7 @@ super + ctrl + shift + space
 
 # expand a window by moving one of its side outward
 # Adding a new script
-super + alt + {h,j,k,l}
+super + ctrl + {h,j,k,l}
 #	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 	$HOME/.config/bspwm/resize.sh {west,south,north,east}
 
@@ -181,8 +190,11 @@ super + {Left,Down,Up,Right}
 #super + ctrl + shift + {Left,Down,Up,Right}
 	bspc node -v {-40 0,0 40,0 -40,40 0}
 
+super + ctrl + shift + {h,j,k,l}
+	bspc node -v {-40 0,0 40,0 -40,40 0}
+
 # bspc node -n 'last.!automatic.local' move node to preselection
-super + space
+super + a
 	bspc node -n 'last.!automatic.local'
 
 # GAPS
@@ -195,3 +207,17 @@ super + ctrl {_,+ shift} + {equal,minus,0}
 # Move windows to next/prev  monitor
 super + shift + bracket{left,right}
   	bspc node -m {prev,next} --follow
+
+# Dunst
+super + space
+	dunstctl history-pop
+
+super + ctrl + space
+	dunstctl close-all
+
+super + alt + space
+	dunstctl close
+
+# Swap the newest marked node with the focused one
+super + shift + s
+	bspc node newest.marked.local -s focused --follow
